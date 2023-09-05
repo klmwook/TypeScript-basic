@@ -1,46 +1,27 @@
-//기본 타입
-let test: string = 'hello';
-let num: number = 0;
-let isFemale: boolean = true;
+//return 값에 지정을 하지 않고, 받아오는 변수에 데이터 값을 가져오는 것이 오류를 잡기가 좋다
+/*
+  함수의 return 값에 타입을 지정하면 비효율적인 이유 
+    1. 이미 리턴 된 값이기 때문에 타입오류가 뜨더라도 할 수 있는 작업이 없음
+    2. 에러자체가 호출단에서 발생하는게 아닌 함수정의단에서 리턴되는 시점에 발생하기 때문에 호출 시 오류 파악이 힘듬
+*/
 
-//참조형 타입
-let like: string[] = ['game', 'music', 'youtube'];
-let dislike: Array<string> = ['study', 'homework'];
-let odd: number[] = [1, 3, 5];
-let even: Array<number> = [2, 4, 6];
-let abc: boolean[] = [true, false, true];
-let bbc: Array<boolean> = [true, false, true];
-
-//tuple : 배열에 들어가는 자료형이 다를 때 배열의 순서마다 타입지정
-let arr1: [number, string] = [3, '3'];
-
-type Score = 'A' | 'B' | 'C' | 'D' | 'F'; //정해져있는 특정값을 그룹으로 묶어서 커스텀 타입 지정 가능
-
-//객체 타입지정
-//interface : 객체처럼 자료의 구조가 복잡한 경우 직접 커스터마이징된 타입을 생성
-interface Student {
-	name: string;
-	age: number;
-	readonly isFemale: boolean; //readonly : 해당 property는 읽기전용으로 변경 불가
-	address?: string; //? : 해당 property는 optional하게 적용 (있을 수도 있고 없을 수도 있고)
-	// [grade: number]: string; //property명을 산정할 수 없을 때 대괄호로 묶어서 타입지정 가능
-	[grade: number]: Score; //특정 그룹의 값을 묶어서 커스텀 타입 지정 가능
+//공통된 함수의 구조는 동일한 인터페이스 적용 가능
+interface Calc {
+	(n1: number, n2: number): any;
 }
 
-//Student라는 커스텀 인터페이스 타입이 지정된 객체
-let student1: Student = {
-	name: 'David',
-	age: 20,
-	isFemale: false,
-	1: 'C',
-	//address: 'Seoul',
+const plus: Calc = (n1, n2) => {
+	return n1 + n2;
 };
 
-let student2: Student = {
-	name: 'Emily',
-	age: 30,
-	isFemale: true,
-	2: 'B',
+const minus: Calc = (n1, n2) => {
+	return n1 - n2;
 };
 
-//student2[2] = 'Z';는 할 수가 없음 (Score에 없음)
+const multiply: Calc = (n1, n2) => {
+	return n1 * n2;
+};
+
+const divider: Calc = (n1, n2) => {
+	return n1 / n2;
+};
