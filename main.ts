@@ -26,3 +26,20 @@ const multiply: Calc = (n1, n2) => {
 const divider: Calc = (n1, n2) => {
 	return n1 / n2;
 };
+
+//| : union 타입은 복수개의 타입을 허용
+const info = (num: number | string) => {
+	console.log(`${num}번째 방문자 입니다.`);
+};
+
+info('3');
+
+const test = (n1: number, n2: number, n3?: number) => {
+	// || : falsy한 값이 들어오면 어떤것이든 대체 값 적용
+	// ?? : null, indefined가 들어왔을 때에만 대체 값 적용
+	// 잘못된 값이 들어오는게 아니라 아예 들어오는 값이 없을 때 대체값을 넣을 때에는 ?? 연산자 활용
+	const result = n1 + n2 + (n3 ?? 5);
+	return result;
+};
+
+console.log(test(1, 2));
