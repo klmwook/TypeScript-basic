@@ -43,3 +43,7 @@ const test = (n1: number, n2: number, n3?: number) => {
 };
 
 console.log(test(1, 2));
+
+//reduce : 불변성 유지하면서 기존의 연산된 값을 가져와서 현재 값과 재연산하면서 누적된 결과값을 리턴
+const test2 = (...nums: number[]) => nums.reduce((acc, cur) => acc + cur, 0);
+console.log(test2(1, 2, 3, 4));
