@@ -7,6 +7,7 @@
 
 //공통된 함수의 구조는 동일한 인터페이스 적용 가능
 interface Calc {
+	//any : 어떤 값이 들어와도 허용하는 타입
 	(n1: number, n2: number): any;
 }
 
